@@ -75,9 +75,9 @@ a#pdf:hover { background: #222; }
 .first h1 {text-align: left}
 .job {text-align: left}
 .talent {text-align: left}
-p.enlarge{text-align: left}
+p.enlarge{font-size: 131%;text-align: left}
 .container{max-width: 1140px; margin: auto}
-#hd h1 {font-size: 300%;}
+#hd h1 {font-size: 197%;}
 .job h4 {text-align: right; }
 #bd #title h2 { margin-bottom: 5px; }
 
