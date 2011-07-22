@@ -52,12 +52,12 @@ p.enlarge span { color: #000 }
 a#pdf { display: block; float: left; background: #666; color: white; padding: 6px 50px 6px 12px; margin-bottom: 6px; text-decoration: none;  }
 a#pdf:hover { background: #222; }
 
-.job { position: relative; margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc; }
-/* .job h4 { position: absolute; top: 0.35em; right: 0 } */
+.job { margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc; position: relative}
+.job h4 { position: absolute; top: 0.35em; right: 0;  } 
 .job p { margin: 0.75em 0 3em 0; }
 
 .last { border: none; }
-<!-- talent { width: 32%; float: left } -->
+talent { width: 32%; float: left }
 .talent h2 { margin-bottom: 6px; }
 
 #srt-ttab { margin-bottom: 100px; text-align: center;  }
@@ -78,10 +78,10 @@ a#pdf:hover { background: #222; }
 p.enlarge{font-size: 131%;text-align: left}
 .container{max-width: 1140px; margin: auto}
 #hd h1 {font-size: 197%;}
-.job h4 {text-align: right; }
+/* .job h2 {min-width: 65.4%;display: inline;margin-right: 65.4%} */
 #bd #title h2 { margin-bottom: 5px; }
 
-
+.clear{clear:right; }
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
@@ -92,7 +92,7 @@ p.enlarge{font-size: 131%;text-align: left}
        font-size: 14px;
     }
     #hd h1 {font-size: 200%;}
-    .job h4 {text-align: left; }
+    .job h4 {position: static }
     .talent li {border-bottom: none};
 
 }
