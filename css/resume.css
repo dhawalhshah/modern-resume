@@ -9,7 +9,10 @@
                         (matt brown)
 ---------------------------------------------------------------------------------
 */
-
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
 
 .msg { padding: 10px; background: #222; position: relative; }
 .msg h1 { color: #fff;  }
@@ -52,9 +55,7 @@ p.enlarge span { color: #000 }
 a#pdf { display: block; float: left; background: #666; color: white; padding: 6px 50px 6px 12px; margin-bottom: 6px; text-decoration: none;  }
 a#pdf:hover { background: #222; }
 
-.job { margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc; position: relative}
-.job h4 { position: absolute; top: 0.35em; right: 0;  } 
-.job p { margin: 0.75em 0 3em 0; }
+
 
 .last { border: none; }
 talent { width: 32%; float: left }
@@ -73,7 +74,7 @@ talent { width: 32%; float: left }
 
 .first h2 {text-align: left}
 .first h1 {text-align: left}
-.job {text-align: left}
+
 .talent {text-align: left}
 p.enlarge{font-size: 131%;text-align: left}
 .container{max-width: 1140px; margin: auto}
@@ -82,6 +83,22 @@ p.enlarge{font-size: 131%;text-align: left}
 #bd #title h2 { margin-bottom: 5px; }
 
 .clear{clear:right; }
+
+/* header */
+header{ margin: 2.5em 0 3em 0; padding-bottom: 1.5em; border-bottom: 1px solid #ccc }
+header h2 { text-transform: uppercase; letter-spacing: 2px; }
+header h1 { font-size: 197%; text-transform: uppercase; letter-spacing: 3px; }
+
+/* footer */
+footer { padding: 1em 0 5em 0; font-size: 92%; border-top: 1px solid #ccc; text-align: center; }
+footer p { margin-bottom: 0; text-align: center;   }
+
+/* job */
+.job { margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc; position: relative}
+.job h4 { position: absolute; top: 0.35em; right: 0;  } 
+.job p { margin: 0.75em 0 3em 0; }
+
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
