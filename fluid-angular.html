@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:ng="http://angularjs.org">
+    <head>
+
+        <title>Jonathan Doe | Web Designer, Director | name@yourdomain.com</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts-min.css" />
+
+        <!-- The 1140px Grid - http://cssgrid.net/ -->
+        <link rel="stylesheet" href="css/1140.css" type="text/css" media="screen" />
+
+
+
+        <link rel="stylesheet" type="text/css" href="css/resume.css" media="screen" />
+
+        <!--css3-mediaqueries-js - http://code.google.com/p/css3-mediaqueries-js/ - Enables media queries in some unsupported browsers-->
+        <script type="text/javascript" src="js/css3-mediaqueries.js"></script>
+        <script type="text/javascript" src="js/angular-0.9.18.min.js" ng:autobind></script>
+        <script src="js/controller.js"></script>
+
+    </head>
+    <body ng:controller="ResumeJobsCtrl">
+        <div class="container" id="inner">
+            <!-- Resume header -->
+            <header>
+                <div class="row">
+                    <div class="eightcol first">
+                        <h1>Jonathan Doe</h1>
+                        <h2>Web Designer, Director</h2>
+                    </div>
+
+                    <div class="fourcol last">
+                        <div class="contact-info">
+                            <h3><a id="pdf" href="#">Download PDF</a></h3>
+                            <h3><a href="mailto:name@yourdomain.com">name@yourdomain.com</a></h3>
+                            <h3>(313) - 867-5309</h3>
+                        </div><!--// .contact-info -->
+                    </div>
+                </div><!--// .yui-gc -->
+            </header><!--// hd -->
+
+            <!-- Resume footer -->
+            <div id="bd">
+
+                <!-- Profile -->
+                <section>
+                    <div class="row bottom">
+                        <div class="twocol first" id="title">
+                            <h2>Profile</h2>
+                        </div>
+                        <div class="tencol last">
+                            <p class="enlarge">
+                                Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change. 
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills -->
+                <section>
+                    <div class="row bottom">
+                        <div class="twocol first" id="title">
+                            <h2>Skills</h2>
+                        </div>
+                        <div class="tencol last">
+
+                            <section class="fourcol talent">
+                                <h2>Web Design</h2>
+                                <p>Assertively exploit wireless initiatives rather than synergistic core competencies.	</p>
+                            </section>
+
+                            <section class="fourcol talent">
+                                <h2>Interface Design</h2>
+                                <p>Credibly streamline mission-critical value with multifunctional functionalities.	 </p>
+                            </section>
+
+                            <section class="threecol talent">
+                                <h2>Project Direction</h2>
+                                <p>Proven ability to lead and manage a wide variety of design and development projects in team and independent situations.</p>
+                            </section>
+
+                        </div>
+                    </div><!--// .yui-gf -->
+                </section>
+
+                <!-- Technial -->
+                <section>
+                    <div class="row bottom">
+                        <div class="twocol first" id="title">
+                            <h2>Technical</h2>
+                        </div>
+                        <div class="tencol last">
+                            <ul class="threecol talent">
+                                <li>XHTML</li>
+                                <li>CSS</li>
+                                <li class="last">Javascript</li>
+                            </ul>
+
+                            <ul class="threecol talent">
+                                <li>Jquery</li>
+                                <li>PHP</li>
+                                <li class="last">CVS / Subversion</li>
+                            </ul>
+
+                            <ul class="threecol talent">
+                                <li>OS X</li>
+                                <li>Windows XP/Vista</li>
+                                <li class="last">Linux</li>
+                            </ul>
+                        </div>
+                    </div><!--// .yui-gf-->
+                </section>
+
+                <!-- Experience -->
+                <section>
+                    <div class="row bottom">
+
+                        <div class="twocol first" id="title">
+                            <h2>Experience</h2>
+                        </div><!--// .yui-u -->
+
+                        <div class="tencol last ">
+
+                            <section class="job" ng:repeat="job in jobs">
+                                <h2>{{job.company}}</h2>
+                                <h4>{{job.date}}</h4>
+                                <h3>{{job.title}}</h3>
+                                <p>{{job.desc}}</p>
+                            </section>                   
+                       
+                        </div><!--// .yui-gf -->
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section>
+                    <div class="row">               
+                        <div class="twocol first" id="title">
+                            <h2>Education</h2>
+                        </div>
+                        <div class="tencol last">
+                            <section class="job last">
+                                <h2>Indiana University - Bloomington, Indiana</h2>
+                                <h4>2001-2004</h4>
+                                <h3>Dual Major, Economics and English &mdash; <strong>4.0 GPA</strong> </h3>
+                            </section>
+                        </div>
+                    </div><!--// .yui-gf -->
+                </section>
+
+
+
+            </div><!-- bd -->
+
+            <footer class="twelvecol">
+                <p>Jonathan Doe &mdash; <a href="mailto:name@yourdomain.com">name@yourdomain.com</a> &mdash; (313) - 867-5309</p>
+            </footer><!--// footer -->
+
+        </div>
+
+
+    </body>
+</html>
+
