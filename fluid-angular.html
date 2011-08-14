@@ -55,7 +55,7 @@
                         </div>
                         <div class="tencol last">
                             <p class="enlarge">
-                                Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change. 
+                                {{profile}}
                             </p>
                         </div>
                     </div>
@@ -69,19 +69,9 @@
                         </div>
                         <div class="tencol last">
 
-                            <section class="fourcol talent">
-                                <h2>Web Design</h2>
-                                <p>Assertively exploit wireless initiatives rather than synergistic core competencies.	</p>
-                            </section>
-
-                            <section class="fourcol talent">
-                                <h2>Interface Design</h2>
-                                <p>Credibly streamline mission-critical value with multifunctional functionalities.	 </p>
-                            </section>
-
-                            <section class="threecol talent">
-                                <h2>Project Direction</h2>
-                                <p>Proven ability to lead and manage a wide variety of design and development projects in team and independent situations.</p>
+                            <section class="fourcol talent" ng:repeat="skill in topSkills" ng:init="i=i+1">
+                                <h2> {{ skill.skill }}</h2>
+                                <p> {{ skill.desc }}</p>
                             </section>
 
                         </div>
@@ -89,6 +79,7 @@
                 </section>
 
                 <!-- Technial -->
+                {{ jobs.count }}
                 <section>
                     <div class="row bottom">
                         <div class="twocol first" id="title">
@@ -144,10 +135,10 @@
                             <h2>Education</h2>
                         </div>
                         <div class="tencol last">
-                            <section class="job last">
-                                <h2>Indiana University - Bloomington, Indiana</h2>
-                                <h4>2001-2004</h4>
-                                <h3>Dual Major, Economics and English &mdash; <strong>4.0 GPA</strong> </h3>
+                            <section class="job last" ng:repeat="degree in education">
+                                <h2>{{degree.university}}</h2>
+                                <h4>{{degree.date}}</h4>
+                                <h3>{{degree.degree}} &mdash; <strong>{{degree.gpa}} GPA</strong> </h3>
                             </section>
                         </div>
                     </div><!--// .yui-gf -->
