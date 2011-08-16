@@ -5,6 +5,7 @@
 function ResumeCtrl(){
     
     this.resume = {
+        "order":['profile','topSkills','education','job'],
         "about":{
             "name":"Jonathan Doe",
             "title":"Web Designer, Director",
@@ -82,21 +83,36 @@ function ResumeCtrl(){
                 "desc":"Proven ability to lead and manage a wide variety of design and development projects in team and independent situations."
             }
             ]
+        },
+        {
+            "title":"Technical",
+            "type":"skills",
+            "name":"skills",
+            "data":[ "XHTML","CSS", "Javascript", "Jquery","PHP","CVS/Subversion","OS X","Windows XP/Vista","Linux"]
         }
         ]
     
     };
        
-    this.skills = [
-    "XHTML","CSS", "Javascript", "Jquery","PHP","CVS/Subversion","OS X","Windows XP/Vista","Linux"
-    ];
-  
-    
-    this.isLast = function(count,index){
-        console.log("Count : " + count + " Index " + index);
+     
+    this.isLast = function(count,index){       
         if(count-1 == index)
         { 
             return "last";
+        }
+    };
+    
+    this.isBottom = function(count, index){
+        if(!(count-1 == index))
+        { 
+            return "bottom";
+        }        
+    }
+    this.getSection = function(name){        
+        for( section in this.resume.sections){             
+            if(this.resume.sections[section].name == name){               
+                return this.resume.sections[section];
+            }
         }
     };
     
