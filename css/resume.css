@@ -47,7 +47,7 @@ p.enlarge { font-size: 144%; padding-right: 6.5em; line-height: 24px; }
 p.enlarge span { color: #000 }
 .contact-info { margin-top: 7px; }
 .first h2 { font-style: italic; }
-.last { border-bottom: 0 }
+
 
 
 /* //-- section styles -- */
@@ -56,8 +56,6 @@ a#pdf { display: block; float: left; background: #666; color: white; padding: 6p
 a#pdf:hover { background: #222; }
 
 
-
-.last { border: none; }
 talent { width: 32%; float: left }
 .talent h2 { margin-bottom: 6px; }
 
@@ -98,7 +96,7 @@ footer p { margin-bottom: 0; text-align: center;   }
 .job h4 { position: absolute; top: 0.35em; right: 0;  } 
 .job p { margin: 0.75em 0 3em 0; }
 
-
+.last { border-bottom: 0; border: none;}
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */

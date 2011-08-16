@@ -24,62 +24,29 @@
         <script src="js/controller.js"></script>
 
     </head>
-    <body ng:controller="ResumeJobsCtrl">
+    <body ng:controller="ResumeCtrl">
         <div class="container" id="inner">
             <!-- Resume header -->
-            <header>
+            <header ng:init="header=resume">
                 <div class="row">
                     <div class="eightcol first">
-                        <h1>Jonathan Doe</h1>
-                        <h2>Web Designer, Director</h2>
+                        <h1>{{ resume.about.name }}</h1>
+                        <h2>{{ resume.about.title }}</h2>
                     </div>
 
                     <div class="fourcol last">
                         <div class="contact-info">
                             <h3><a id="pdf" href="#">Download PDF</a></h3>
-                            <h3><a href="mailto:name@yourdomain.com">name@yourdomain.com</a></h3>
-                            <h3>(313) - 867-5309</h3>
+                            <h3><a href="mailto:{{resume.about.email}}">{{resume.about.email}}</a></h3>
+                            <h3>{{resume.about.phone}}</h3>
                         </div><!--// .contact-info -->
                     </div>
                 </div><!--// .yui-gc -->
             </header><!--// hd -->
 
             <!-- Resume footer -->
-            <div id="bd">
-
-                <!-- Profile -->
-                <section>
-                    <div class="row bottom">
-                        <div class="twocol first" id="title">
-                            <h2>Profile</h2>
-                        </div>
-                        <div class="tencol last">
-                            <p class="enlarge">
-                                {{profile}}
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Skills -->
-                <section>
-                    <div class="row bottom">
-                        <div class="twocol first" id="title">
-                            <h2>Skills</h2>
-                        </div>
-                        <div class="tencol last">
-
-                            <section class="fourcol talent" ng:repeat="skill in topSkills" ng:init="i=i+1">
-                                <h2> {{ skill.skill }}</h2>
-                                <p> {{ skill.desc }}</p>
-                            </section>
-
-                        </div>
-                    </div><!--// .yui-gf -->
-                </section>
-
-                <!-- Technial -->
-                {{ jobs.count }}
+            <div id="bd">                   
+                <!-- Technial -->               
                 <section>
                     <div class="row bottom">
                         <div class="twocol first" id="title">
@@ -107,49 +74,61 @@
                     </div><!--// .yui-gf-->
                 </section>
 
-                <!-- Experience -->
-                <section>
-                    <div class="row bottom">
+                <!-- Generating resume purely from data --> 
 
+                <section ng:repeat="section in resume.sections">
+                    <div class="row bottom">               
                         <div class="twocol first" id="title">
-                            <h2>Experience</h2>
-                        </div><!--// .yui-u -->
+                            <h2>{{section.title}}</h2>
+                        </div>
 
-                        <div class="tencol last ">
+                        <div class="tencol last" >
+                            <ng:switch on="section.type">
 
-                            <section class="job" ng:repeat="job in jobs">
-                                <h2>{{job.company}}</h2>
-                                <h4>{{job.date}}</h4>
-                                <h3>{{job.title}}</h3>
-                                <p>{{job.desc}}</p>
-                            </section>                   
-                       
-                        </div><!--// .yui-gf -->
+                                <div ng:switch-when="profile">
+                                    <p class="enlarge">
+                                        {{section.data}}
+                                    </p>
+                                </div>
+
+                                <!-- Job -->
+                                <div ng:switch-when="job">
+                                    <section class="job {{isLast(section.data.length,$index)}}"  ng:repeat="job in section.data">
+                                        <h2>{{job.company}}</h2>
+                                        <h4>{{job.date}}</h4>
+                                        <h3>{{job.title}}</h3>
+                                        <p>{{job.desc}}</p>  
+                                    </section>
+                                </div>
+
+                                <!-- Education -->
+                                <div ng:switch-when="edu">
+                                    <section class="job {{ isLast(section.data.length,$index) }}" ng:repeat="degree in section.data">
+                                        <h2>{{degree.university}}</h2>
+                                        <h4>{{degree.date}}</h4>
+                                        <h3>{{degree.degree}} &mdash; <strong>{{degree.gpa}} GPA</strong> </h3>
+                                    </section>
+                                </div>
+
+                                <!-- Top skills -->
+                                <div ng:switch-when="topSkills">
+                                    <section class="fourcol talent {{ isLast(section.data.length,$index) }}" ng:repeat="skill in section.data" >
+                                        <h2> {{ skill.skill }}</h2>
+                                        <p> {{ skill.desc }}</p>
+                                    </section>
+                                </div>
+                            </ng:switch>
+                        </div>
                     </div>
                 </section>
 
-                <!-- Education -->
-                <section>
-                    <div class="row">               
-                        <div class="twocol first" id="title">
-                            <h2>Education</h2>
-                        </div>
-                        <div class="tencol last">
-                            <section class="job last" ng:repeat="degree in education">
-                                <h2>{{degree.university}}</h2>
-                                <h4>{{degree.date}}</h4>
-                                <h3>{{degree.degree}} &mdash; <strong>{{degree.gpa}} GPA</strong> </h3>
-                            </section>
-                        </div>
-                    </div><!--// .yui-gf -->
-                </section>
 
 
 
             </div><!-- bd -->
 
             <footer class="twelvecol">
-                <p>Jonathan Doe &mdash; <a href="mailto:name@yourdomain.com">name@yourdomain.com</a> &mdash; (313) - 867-5309</p>
+                <p>{{ resume.about.name }} &mdash; <a href="mailto:{{resume.about.email}}">{{resume.about.email}}</a> &mdash; {{resume.about.phone}}</p>
             </footer><!--// footer -->
 
         </div>
