@@ -94,7 +94,7 @@
                                 <div ng:switch-when="job" itemprop="organization" itemscope itemtype="http://schema.org/Organization">
                                     <section class="job {{isLast(section.data.length,$index)}}"  ng:repeat="job in section.data">
                                         <h2>{{job.company}}</h2>
-                                        <h4>{{job.date}}</h4>
+                                        <h4>{{job.startDate|period:job.endDate}}</h4>
                                         <h3>{{job.title}}</h3>
                                         <p>{{job.desc}}</p>  
                                     </section>
@@ -104,7 +104,7 @@
                                 <div ng:switch-when="edu" itemprop="aluminiOf" itemscope itemtype="http://schema.org/EducationalOrganization">
                                     <section class="job {{ isLast(section.data.length,$index) }}" ng:repeat="degree in section.data">
                                         <h2 itemprop="name">{{degree.university}}</h2>
-                                        <h4>{{degree.date}}</h4>
+                                        <h4>{{degree.startDate|period:degree.endDate}}</h4>
                                         <h3>{{degree.degree}} &mdash; <strong>{{degree.gpa}} GPA</strong> </h3>
                                     </section>
                                 </div>
