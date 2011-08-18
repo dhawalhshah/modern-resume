@@ -25,20 +25,20 @@
 
     </head>
     <body >
-        <div class="container" id="inner">
+        <div class="container" id="inner" itemscope itemtype="http://schema.org/Person">
             <!-- Resume header -->
             <header>
                 <div class="row">
                     <div class="eightcol first">
-                        <h1>{{ resume.about.name }}</h1>
-                        <h2>{{ resume.about.title }}</h2>
+                        <h1 itemprop="name">{{ resume.about.name }}</h1>
+                        <h2 itemprop="jobTitle">{{ resume.about.title }}</h2>
                     </div>
 
                     <div class="fourcol last">
                         <div class="contact-info">
                             <h3><a id="pdf" href="#">Download PDF</a></h3>
-                            <h3><a href="mailto:{{resume.about.email}}">{{resume.about.email}}</a></h3>
-                            <h3>{{resume.about.phone}}</h3>
+                            <h3><a href="mailto:{{resume.about.email}}" itemprop="email">{{resume.about.email}}</a></h3>
+                            <h3 itemprop="telephone">{{resume.about.phone}}</h3>
                         </div><!--// .contact-info -->
                     </div>
                 </div><!--// .yui-gc -->
@@ -85,13 +85,13 @@
                             <ng:switch on="section.type">
 
                                 <div ng:switch-when="profile">
-                                    <p class="enlarge">
+                                    <p class="enlarge" itemprop="description">
                                         {{section.data}}
                                     </p>
                                 </div>
 
                                 <!-- Job -->
-                                <div ng:switch-when="job">
+                                <div ng:switch-when="job" itemprop="organization" itemscope itemtype="http://schema.org/Organization">
                                     <section class="job {{isLast(section.data.length,$index)}}"  ng:repeat="job in section.data">
                                         <h2>{{job.company}}</h2>
                                         <h4>{{job.date}}</h4>
@@ -101,9 +101,9 @@
                                 </div>
 
                                 <!-- Education -->
-                                <div ng:switch-when="edu">
+                                <div ng:switch-when="edu" itemprop="aluminiOf" itemscope itemtype="http://schema.org/EducationalOrganization">
                                     <section class="job {{ isLast(section.data.length,$index) }}" ng:repeat="degree in section.data">
-                                        <h2>{{degree.university}}</h2>
+                                        <h2 itemprop="name">{{degree.university}}</h2>
                                         <h4>{{degree.date}}</h4>
                                         <h3>{{degree.degree}} &mdash; <strong>{{degree.gpa}} GPA</strong> </h3>
                                     </section>
@@ -126,9 +126,10 @@
 
             </div><!-- bd -->
 
+            <!-- Footer -->
             <footer class="twelvecol">
                 <p>{{ resume.about.name }} &mdash; <a href="mailto:{{resume.about.email}}">{{resume.about.email}}</a> &mdash; {{resume.about.phone}}</p>
-            </footer><!--// footer -->
+            </footer><
 
         </div>
 
