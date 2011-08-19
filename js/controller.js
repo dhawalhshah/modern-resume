@@ -122,24 +122,33 @@ function ResumeCtrl(){
 
 var month=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
 
+// The period filter is used to format the start and endate for a job/education
+// It uses <time> element nodes and appropriate HTML5 microdata.
 angular.filter('period',function(startDate,endDate){
+    
+    // Appending the start date
     startDateObj = new Date(startDate);
     startTimeEl = document.createElement("time");
     startTimeEl.textContent = month[startDateObj.getMonth()] + ', ' + startDateObj.getFullYear();
     startTimeEl.setAttribute("datetime", startDate);
-    
+    startTimeEl.setAttribute("itemprop", "startDate");
     this.$element.append( startTimeEl );
+    
+    // Appending the period seperator
     this.$element.append(document.createTextNode(" - ") );
     
     if(endDate){
+        // Appending the start date
         endDateObj = new Date(endDate);
         endTimeEl = document.createElement("time");
         endTimeEl.textContent = month[endDateObj.getMonth()] + ', ' + endDateObj.getFullYear();
-        endTimeEl.setAttribute("datetime", endDate)
-         this.$element.append( endTimeEl );
+        endTimeEl.setAttribute("datetime", endDate);
+        endTimeEl.setAttribute("itemprop", "endDate");
+        this.$element.append( endTimeEl );
     }
     else{
-       this.$element.append(document.createTextNode("current"));
+        // No End date it means it's current
+        this.$element.append(document.createTextNode("current"));
     }    
 });
 
