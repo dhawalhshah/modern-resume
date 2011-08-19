@@ -124,15 +124,22 @@ var month=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct",
 
 angular.filter('period',function(startDate,endDate){
     startDateObj = new Date(startDate);
-    out = month[startDateObj.getMonth()] + ', ' + startDateObj.getFullYear() + ' - ';
+    startTimeEl = document.createElement("time");
+    startTimeEl.textContent = month[startDateObj.getMonth()] + ', ' + startDateObj.getFullYear();
+    startTimeEl.setAttribute("datetime", startDate);
+    
+    this.$element.append( startTimeEl );
+    this.$element.append(document.createTextNode(" - ") );
+    
     if(endDate){
         endDateObj = new Date(endDate);
-        out = out + month[endDateObj.getMonth()] + ', ' + endDateObj.getFullYear();
+        endTimeEl = document.createElement("time");
+        endTimeEl.textContent = month[endDateObj.getMonth()] + ', ' + endDateObj.getFullYear();
+        endTimeEl.setAttribute("datetime", endDate)
+         this.$element.append( endTimeEl );
     }
     else{
-        out = out + 'current';
-    }
-
-    return out;
+       this.$element.append(document.createTextNode("current"));
+    }    
 });
 
