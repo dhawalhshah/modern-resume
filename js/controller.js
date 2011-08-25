@@ -154,7 +154,7 @@ angular.filter('period',function(startDate,endDate){
 
 angular.filter('microdata',function(item,itemprop,itemptype){
            if(typeof item != 'undefined'){
-                //this.$element.text(item)
+                this.$element.text(item)
            }
 
            if(typeof itemprop != 'undefined'){
