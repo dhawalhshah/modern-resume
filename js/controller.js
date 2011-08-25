@@ -152,3 +152,19 @@ angular.filter('period',function(startDate,endDate){
     }    
 });
 
+angular.filter('microdata',function(item,itemprop,itemptype){
+           if(typeof item != 'undefined'){
+                //this.$element.text(item)
+           }
+
+           if(typeof itemprop != 'undefined'){
+                this.$element.attr("itemprop",itemprop);
+           }
+
+           if(typeof itemtype != 'undefined'){
+                this.$element.attr("itemscope");
+                this.$element.attr("itemtype","http://schema.org/" + itemtype);
+           }
+
+});
+

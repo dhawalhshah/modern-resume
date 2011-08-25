@@ -37,7 +37,7 @@
                     <div class="fourcol last">
                         <div class="contact-info">
                             <h3><a id="pdf" href="#">Download PDF</a></h3>
-                            <h3><a href="mailto:{{resume.about.email}}" itemprop="email">{{resume.about.email}}</a></h3>
+                            <h3>{{ resume.about.email|linky}}</h3>
                             <h3 itemprop="telephone">{{resume.about.phone}}</h3>
                         </div><!--// .contact-info -->
                     </div>
@@ -85,15 +85,15 @@
                             <ng:switch on="section.type">
 
                                 <div ng:switch-when="profile">
-                                    <p class="enlarge" itemprop="description">
-                                        {{section.data}}
+                                    <p class="enlarge">
+                                        {{section.data|microdata:"description"}}
                                     </p>
                                 </div>
 
                                 <!-- Job -->
-                                <div ng:switch-when="job" itemprop="organization" itemscope itemtype="http://schema.org/Organization">
+                                <div ng:switch-when="job" itemscope itemprop="organization" itemtype="http://schema.org/Organization">
                                     <section class="job {{isLast(section.data.length,$index)}}"  ng:repeat="job in section.data">
-                                        <h2>{{job.company}}</h2>
+                                        <h2>{{job.company|microdata:"name"}}</h2>
                                         <h4>{{job.startDate|period:job.endDate}}</h4>
                                         <h3>{{job.title}}</h3>
                                         <p>{{job.desc}}</p>  
@@ -103,7 +103,7 @@
                                 <!-- Education -->
                                 <div ng:switch-when="edu" itemprop="aluminiOf" itemscope itemtype="http://schema.org/EducationalOrganization">
                                     <section class="job {{ isLast(section.data.length,$index) }}" ng:repeat="degree in section.data">
-                                        <h2 itemprop="name">{{degree.university}}</h2>
+                                        <h2>{{degree.university|microdata:"name"}}</h2>
                                         <h4>{{degree.startDate|period:degree.endDate}}</h4>
                                         <h3>{{degree.degree}} &mdash; <strong>{{degree.gpa}} GPA</strong> </h3>
                                     </section>
