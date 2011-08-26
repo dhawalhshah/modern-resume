@@ -25,6 +25,7 @@ function ResumeCtrl(){
                 "company": "Facebook",
                 "startDate":"2005-03-01",
                 "endDate":"2007-08-01",
+                "url":"http://www.facebook.com",
                 "title":"Senior Interface Designer",
                 "desc":"Intrinsicly enable optimal core competencies through corporate relationships. \n\
                 Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence."
@@ -33,6 +34,7 @@ function ResumeCtrl(){
                 "company": "Apple Inc",
                 "startDate":"2005-03-01",
                 "endDate":"2007-08-01",
+                "url":"http://www.apple.com",              
                 "title":"Senior Interface Designer",
                 "desc":"Progressively reconceptualize multifunctional outside the box thinking through inexpensive methods of empowerment. Compellingly morph extensive niche markets with mission-critical ideas. Phosfluorescently deliver bricks-and-clicks strategic theme areas rather than scalable benefits."
             },
@@ -40,6 +42,7 @@ function ResumeCtrl(){
                 "company": "Microsoft",
                 "startDate":"2004-01-01",
                 "endDate":"2005-06-01",
+                "url":"http://www.microsoft.com", 
                 "title":"Principal and Creative Lead",
                 "desc":"Intrinsicly transform flexible manufactured products without excellent intellectual capital. Energistically evisculate orthogonal architectures through covalent action items. Assertively incentivize sticky platforms without synergistic materials."
             },
@@ -47,6 +50,7 @@ function ResumeCtrl(){
                 "company": "International Business Machines (IBM)",
                 "startDate":"2001-03-01",
                 "endDate":"2005-07-01",
+                "url":"http://www.ibm.com",
                 "title":"Lead Web Designer",
                 "desc":"Globally re-engineer cross-media schemas through viral methods of empowerment. Proactively grow long-term high-impact human capital and highly efficient innovation. Intrinsicly iterate excellent e-tailers with timely e-markets."
             }
@@ -95,7 +99,9 @@ function ResumeCtrl(){
     
     };
        
-     
+    this.assets = {
+        'external' : 'images/external.png'
+    }; 
     this.isLast = function(count,index){       
         if(count-1 == index)
         { 
@@ -127,8 +133,8 @@ var month=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct",
 angular.filter('period',function(startDate,endDate){
     
     // Appending the start date
-    startDateObj = new Date(startDate);
-    startTimeEl = document.createElement("time");
+    var startDateObj = new Date(startDate);
+    var startTimeEl = document.createElement("time");
     startTimeEl.textContent = month[startDateObj.getMonth()] + ', ' + startDateObj.getFullYear();
     startTimeEl.setAttribute("datetime", startDate);
     startTimeEl.setAttribute("itemprop", "startDate");
@@ -139,8 +145,8 @@ angular.filter('period',function(startDate,endDate){
     
     if(endDate){
         // Appending the start date
-        endDateObj = new Date(endDate);
-        endTimeEl = document.createElement("time");
+        var endDateObj = new Date(endDate);
+        var endTimeEl = document.createElement("time");
         endTimeEl.textContent = month[endDateObj.getMonth()] + ', ' + endDateObj.getFullYear();
         endTimeEl.setAttribute("datetime", endDate);
         endTimeEl.setAttribute("itemprop", "endDate");
@@ -166,5 +172,19 @@ angular.filter('microdata',function(item,itemprop,itemptype){
                 this.$element.attr("itemtype","http://schema.org/" + itemtype);
            }
 
+});
+
+angular.filter('external',function(url){
+       if(typeof url == 'undefined'){
+           return;
+       }
+       var a = document.createElement("a");
+       a.setAttribute("href", url) ;       
+       a.setAttribute("target","_blank");      
+       var img =document.createElement("img") ;
+       img.setAttribute("src", this.assets.external) ;
+       a.setAttribute("class", "external")
+       a.appendChild(img);
+       this.$element.append( a );
 });
 

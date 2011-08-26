@@ -97,7 +97,9 @@ footer p { margin-bottom: 0; text-align: center;   }
 .job p { margin: 0.75em 0 3em 0; }
 
 .last { border-bottom: 0; border: none;}
-
+.external{
+    padding-left: 5px;    
+}
 .container{
 width: 70%;
 }
