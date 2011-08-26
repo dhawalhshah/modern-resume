@@ -133,7 +133,7 @@ var month=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct",
 angular.filter('period',function(startDate,endDate){
     
     // Appending the start date
-    var startDateObj = new Date(startDate);
+    var startDateObj = parseDate(startDate);
     var startTimeEl = document.createElement("time");
     startTimeEl.textContent = month[startDateObj.getMonth()] + ', ' + startDateObj.getFullYear();
     startTimeEl.setAttribute("datetime", startDate);
@@ -145,7 +145,7 @@ angular.filter('period',function(startDate,endDate){
     
     if(endDate){
         // Appending the start date
-        var endDateObj = new Date(endDate);
+        var endDateObj = parseDate(endDate);
         var endTimeEl = document.createElement("time");
         endTimeEl.textContent = month[endDateObj.getMonth()] + ', ' + endDateObj.getFullYear();
         endTimeEl.setAttribute("datetime", endDate);
@@ -158,33 +158,47 @@ angular.filter('period',function(startDate,endDate){
     }    
 });
 
+//  Function to parse date to fix the safari bug
+//  taken from http://stackoverflow.com/questions/3085937/safari-js-cannot-parse-yyyy-mm-dd-date-format
+function parseDate(input, format) {
+    format = format || 'yyyy-mm-dd'; // default format
+    var parts = input.match(/(\d+)/g), 
+    i = 0, fmt = {};
+    // extract date-part indexes from the format
+    format.replace(/(yyyy|dd|mm)/g, function(part) {
+        fmt[part] = i++;
+    });
+
+    return new Date(parts[fmt['yyyy']], parts[fmt['mm']]-1, parts[fmt['dd']]);
+}
+
 angular.filter('microdata',function(item,itemprop,itemptype){
-           if(typeof item != 'undefined'){
-                this.$element.text(item)
-           }
+    if(typeof item != 'undefined'){
+        this.$element.text(item)
+    }
 
-           if(typeof itemprop != 'undefined'){
-                this.$element.attr("itemprop",itemprop);
-           }
+    if(typeof itemprop != 'undefined'){
+        this.$element.attr("itemprop",itemprop);
+    }
 
-           if(typeof itemtype != 'undefined'){
-                this.$element.attr("itemscope");
-                this.$element.attr("itemtype","http://schema.org/" + itemtype);
-           }
+    if(typeof itemtype != 'undefined'){
+        this.$element.attr("itemscope");
+        this.$element.attr("itemtype","http://schema.org/" + itemtype);
+    }
 
 });
 
 angular.filter('external',function(url){
-       if(typeof url == 'undefined'){
-           return;
-       }
-       var a = document.createElement("a");
-       a.setAttribute("href", url) ;       
-       a.setAttribute("target","_blank");      
-       var img =document.createElement("img") ;
-       img.setAttribute("src", this.assets.external) ;
-       a.setAttribute("class", "external")
-       a.appendChild(img);
-       this.$element.append( a );
+    if(typeof url == 'undefined'){
+        return;
+    }
+    var a = document.createElement("a");
+    a.setAttribute("href", url) ;       
+    a.setAttribute("target","_blank");      
+    var img =document.createElement("img") ;
+    img.setAttribute("src", this.assets.external) ;
+    a.setAttribute("class", "external")
+    a.appendChild(img);
+    this.$element.append( a );
 });
 
