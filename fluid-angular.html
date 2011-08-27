@@ -85,7 +85,7 @@
                                 <!-- Top skills -->
                                 <div ng:switch-when="topSkills">
                                     <section class="fourcol talent {{ isLast(section.data.length,$index) }}" ng:repeat="skill in section.data" >
-                                        <h2> {{ skill.skill }}</h2>
+                                        <h2> {{ skill.skill }}{{skill.url|external}}</h2>
                                         <p> {{ skill.desc }}</p>
                                     </section>
                                 </div>
