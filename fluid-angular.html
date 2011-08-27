@@ -46,34 +46,7 @@
 
             <!-- Resume footer -->
             <div id="bd">                   
-                <!-- Technial -->               
-                <section>
-                    <div class="row bottom">
-                        <div class="twocol first" id="title">
-                            <h2>Technical</h2>
-                        </div>
-                        <div class="tencol last">
-                            <ul class="threecol talent">
-                                <li>XHTML</li>
-                                <li>CSS</li>
-                                <li class="last">Javascript</li>
-                            </ul>
-
-                            <ul class="threecol talent">
-                                <li>Jquery</li>
-                                <li>PHP</li>
-                                <li class="last">CVS / Subversion</li>
-                            </ul>
-
-                            <ul class="threecol talent">
-                                <li>OS X</li>
-                                <li>Windows XP/Vista</li>
-                                <li class="last">Linux</li>
-                            </ul>
-                        </div>
-                    </div><!--// .yui-gf-->
-                </section>
-
+                
                 <!-- Generating resume sections --> 
                 <section ng:repeat="name in resume.order" ng:init="section=getSection(name)">                   
                     <div class="row {{isBottom(resume.order.length, $index)}}">               
