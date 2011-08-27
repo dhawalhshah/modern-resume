@@ -6,7 +6,24 @@ function ResumeCtrl(){
             "name":"Jonathan Doe",
             "title":"Web Designer, Director",
             "email":"name@yourdomain.com",
-            "phone":"(313) - 867-5309"            
+            "phone":"(313) - 867-5309",        
+            "social":[
+            {
+                "icon":"google-plus.png",
+                "url":"http://www.google.com",
+                "title":"Google+"
+            },
+            {
+                "icon":"facebook.png",
+                "url":"http://www.facebook.com",
+                "title":"Facebook"
+            },
+            {
+                "icon":"github.png",
+                "url":"http://www.githunb.com",
+                "title":"Github"
+            }
+            ]
         },
         "sections":
         [
@@ -188,17 +205,40 @@ angular.filter('microdata',function(item,itemprop,itemptype){
 
 });
 
+// Generates links and icon to external websites
 angular.filter('external',function(url){
     if(typeof url == 'undefined'){
         return;
     }
-    var a = document.createElement("a");
-    a.setAttribute("href", url) ;       
-    a.setAttribute("target","_blank");      
+    
     var img =document.createElement("img") ;
     img.setAttribute("src", this.assets.external) ;
+    
+    var a = document.createElement("a");
+    a.setAttribute("href", url) ;       
+    a.setAttribute("target","_blank");         
     a.setAttribute("class", "external")
     a.appendChild(img);
+    
     this.$element.append( a );
+});
+
+// Generates links and icons for social networks
+angular.filter('social',function(network){
+    
+    if(typeof network == 'undefined'){
+        return;
+    }
+    var img =document.createElement("img") ;
+    img.setAttribute("src", 'images/' + network.icon) ;
+    img.setAttribute("title",network.title);
+    
+    var a = document.createElement("a");
+    a.setAttribute("href", network.url) ;       
+    a.setAttribute("target","_blank");          
+    a.setAttribute("class", "external")
+    a.appendChild(img);
+    
+    return a;    
 });
 

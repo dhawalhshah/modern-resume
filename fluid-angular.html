@@ -36,9 +36,10 @@
 
                     <div class="fourcol last">
                         <div class="contact-info">
-                            <h3><a id="pdf" href="#">Download PDF</a></h3>
-                            <h3>{{ resume.about.email|linky}}</h3>
-                            <h3 itemprop="telephone">{{resume.about.phone}}</h3>
+                            <h3>
+                                <span ng:repeat="network in resume.about.social">{{network|social}}</span>
+                            </h3>
+                            <h3>{{ resume.about.email|linky}}</h3>                            
                         </div><!--// .contact-info -->
                     </div>
                 </div><!--// .yui-gc -->
@@ -101,7 +102,7 @@
 
             <!-- Footer -->
             <footer class="twelvecol">
-                <p>{{ resume.about.name }} &mdash; {{resume.about.email|linky}} &mdash; {{resume.about.phone}}</p>
+                <p>{{ resume.about.name }} &mdash; {{resume.about.email|linky}}</p>
             </footer>
 
         </div>
