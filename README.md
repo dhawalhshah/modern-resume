@@ -7,7 +7,7 @@ Not all of these are true now. Much of it is still work in progress.
 A jobseeker is required to have his/her resume in multiple formats - doc, pdf, txt, html(for online presence). For most of these formats the data is heavily tied into the format that they are displayed in. This results in multiple copies of the same resume which need to be maintained separately.
 
 ### Solution
-All the resume data is stored in 'resume.json' which is used by the controller to generate the page. Using a combination of print styles and other js libraries(jsPdf?) I believe resumes in other formats can be generated.  
+All the resume data is stored in `resume.json` which is used by the controller to generate the page. Using a combination of print styles and other js libraries(jsPdf?) I believe resumes in other formats can be generated.  
 
 ## Technologies/Assets leveraged 
 - [Angularjs](http://angularjs.org/) - Separation of data and view is achieved by using templating system provided by angular 
