@@ -123,6 +123,8 @@ angular.filter('social',function(network){
     var img =document.createElement("img") ;
     img.setAttribute("src", 'images/' + network.icon) ;
     img.setAttribute("title",network.title);
+    img.setAttribute("width","24px");
+    img.setAttribute("height","24px");
     
     var a = document.createElement("a");
     a.setAttribute("href", network.url) ;       
